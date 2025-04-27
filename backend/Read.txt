@@ -1,0 +1,46 @@
+cd backend
+npm init -y
+
+npm install express mongoose dotenv jsonwebtoken bcryptjs cors nodemon
+
+
+//to run the code
+npm run dev 
+
+for get requests we have to pass values as queries in URL in postman
+
+
+payment gateway: PayPal,
+Link: https://www.paypal.com/signin?returnUri=https%3A%2F%2Fdeveloper.paypal.com%2Fdashboard%2Faccounts%2Fedit%2F5315838035616515922%3FaccountName%3Dsb-oy7fe39371000%40personal.example.com&intent=developer&ctxId=ulc3a7c588cca7480482c749072f1bf81b
+
+MongoDB Atlas: 
+Link: https://cloud.mongodb.com/v2/67ed781795244619e77c0d61#/metrics/replicaSet/67ed786d8ae562673c02430c/explorer
+
+Upload Images:
+Cloudinary:
+Link: https://cloudinary.com/developers
+
+to use cloudinary we need packages like multer, cloudinary, streamifier
+multer: to handle file uploads
+cloudinary: to upload files to cloudinary api
+streamifier: to convert chunks of data to stream
+
+npm install multer cloudinary streamifier
+
+
+to link frontend and backend, we are using redux, i.e redux thunks
+https://redux.js.org/usage/writing-logic-thunks
+to install them, rum the command,
+
+cd frontend
+npm i react-redux @reduxjs/toolkit axios
+
+"src": "/(.*)", //regular expression, matching all the routes
+
+"dest": "server.js" ==> send all requests to sever.js
+
+"config": {
+            "distDir": "dist"
+        } ---> storing output files in the dist folder
+
+
