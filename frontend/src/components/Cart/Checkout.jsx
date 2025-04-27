@@ -4,7 +4,7 @@ import {useState} from 'react'
 import PayPalButton from './PayPalButton'
 import { useDispatch, useSelector } from 'react-redux'
 import { createCheckout } from '../../redux/slices/checkoutSlice'
-
+import axios from 'axios';
 
 
 
@@ -163,13 +163,14 @@ const Checkout = () => {
             </div>
           </div>
           <div className='mb-4'>
-            <label className='block text-gray-700'>country</label>
-            <input type="text" 
-            value={shippingAddress.country}
-            onChange={(e) =>
-              setShippingAddress({...shippingAddress, country: e.target.value})}
-              className='w-full p-2 border rounded'
-              required
+            <label className='block text-gray-700'>Country</label>
+            <input 
+                type="text" 
+                value={shippingAddress.country}
+                onChange={(e) =>
+                    setShippingAddress({...shippingAddress, country: e.target.value})}
+                className='w-full p-2 border rounded'
+                required
             />
           </div>
           <div className='mb-4'>

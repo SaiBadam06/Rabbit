@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// Async Thunk to create a checckout session
+// Async Thunk to create a checkout session
 export const createCheckout = createAsyncThunk(
-    "checkout/createCheckout",
+    'checkout/create',
     async (checkoutData, { rejectWithValue }) => {
         try {
             const response = await axios.post(
@@ -11,13 +11,16 @@ export const createCheckout = createAsyncThunk(
                 checkoutData,
                 {
                     headers: {
-                        Authorization: `Bearer ${localStorage.getItem("userToken")}`,
-                    },
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+                    }
                 }
             );
             return response.data;
         } catch (error) {
-            return rejectWithValue(error.response.data);
+            return rejectWithValue(
+                error.response?.data?.message || 'Failed to create checkout'
+            );
         }
     }
 );

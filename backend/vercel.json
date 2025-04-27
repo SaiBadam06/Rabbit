@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "m\name": "backend",
+    "name": "backend",
     "builds": [
         {
             "src": "server.js",
