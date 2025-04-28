@@ -58,7 +58,12 @@ export const registerUser = createAsyncThunk(
 // Slice
 const authSlice = createSlice({
     name: 'auth',
-    initialState,
+    initialState: {
+        user: null,
+        token: localStorage.getItem('userToken'),
+        loading: false,
+        error: null
+    },
     reducers: {
         logout: (state) => {
             state.user = null;  // Changed from userInfo to user

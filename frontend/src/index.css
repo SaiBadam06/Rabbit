@@ -2,8 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --srh-orange: #ff822a;
+  --srh-black: #000000;
+  --srh-gold: #daa520;
+  --srh-gray: #4a4a4a;
+}
+
 #root{
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+}
+
+.filter-section {
+  @apply pb-4 border-b border-gray-200 last:border-0;
+}
+
+.filter-section button:focus {
+  @apply outline-none ring-2 ring-[var(--srh-orange)] ring-opacity-50;
+}
+
+.form-radio {
+  @apply w-4 h-4 cursor-pointer focus:ring-[var(--srh-orange)];
+}
+
+.form-checkbox {
+  @apply rounded text-[var(--srh-orange)] border-gray-300 focus:ring-[var(--srh-orange)];
+}
+
+/* Search icon styles */
+.search-icon {
+  @apply text-white;
+}
+
+.search-input::placeholder {
+  @apply text-gray-400;
+}
+
+.search-container .search-icon path,
+.search-container .search-icon svg {
+  @apply text-white stroke-white fill-white;
 }

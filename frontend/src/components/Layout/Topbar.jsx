@@ -1,28 +1,48 @@
 import React from 'react';
-import { TbBrandMeta } from "react-icons/tb";
-import { IoLogoInstagram } from "react-icons/io5";  // Fixed import
-import { RiTwitterXLine } from "react-icons/ri";    // Fixed Twitter icon name
+import { TbBrandFacebook } from "react-icons/tb";
+import { IoLogoInstagram } from "react-icons/io5";
+import { RiTwitterXLine } from "react-icons/ri";
+import { HiPhone } from "react-icons/hi";
 
 const Topbar = () => {
   return (
-    <div className='bg-rabbit-red text-white p-1' >  {/* Added p-4 for testing */}
-      <div className="container mx-auto flex justify-between items-center py-3 px-4">
-        <div className="hidden md:flex items-center space-x-4">
-          <a href="#" className="hover:text-gray-300">
-            <TbBrandMeta className="h-5 w-5" />
+    <div className='sticky bg-[var(--srh-orange)] text-white py-2'>
+      <div className="container mx-auto flex justify-between items-center px-4">
+        <div className="hidden md:flex items-center space-x-6">
+          <a 
+            href="https://www.facebook.com/SunRisersHyderabad" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-[var(--srh-black)] transition-colors duration-200"
+          >
+            <TbBrandFacebook className="h-5 w-5" />
           </a>
-          <a href="#" className="hover:text-gray-300">
-            <IoLogoInstagram className="h-5 w-5" />  {/* Correct component */}
+          <a 
+            href="https://www.instagram.com/sunrisershyderabad" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-[var(--srh-black)] transition-colors duration-200"
+          >
+            <IoLogoInstagram className="h-5 w-5" />
           </a>
-          <a href="#" className="hover:text-gray-300">
-            <RiTwitterXLine className="h-5 w-5" />    {/* Fixed Twitter icon */}
+          <a 
+            href="https://twitter.com/SunRisers" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-[var(--srh-black)] transition-colors duration-200"
+          >
+            <RiTwitterXLine className="h-5 w-5" />
           </a>
         </div>
-        <div className="text-sm text-center flex-grow">
-          <span> We Ship WorldWide - Fast and reliable shippinf!</span>
+        
+        <div className="text-sm text-center flex-grow font-medium">
+          <span className="hidden md:inline">Merchandise Store for Oranage Army</span>
+          <span className="md:hidden">Merch Store</span>
         </div>
-        <div className='text-sm hidden md:block'>
-          <a href="+91 9059223500" className='hover:text-gray-300'>+91 9059223500</a>
+        
+        <div className='text-sm hidden md:flex items-center space-x-2 hover:text-[var(--srh-black)] transition-colors duration-200'>
+          <HiPhone className="h-4 w-4" />
+          <a href="tel:+919059223500">+91 9059223500</a>
         </div>
       </div>
     </div>

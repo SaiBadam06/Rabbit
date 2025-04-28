@@ -1,25 +1,58 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserOrders } from '../redux/slices/orderSlice';
 
 const MyOrdersPage = () => {
-    
-    const navigate =useNavigate();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
-    const {orders, loading, error} = useSelector((state) => state.orders);  
+    const { orders, loading, error } = useSelector((state) => state.orders);
+    const { user, token } = useSelector((state) => state.auth);
 
     useEffect(() => {
-            dispatch(fetchUserOrders());
-    }, [dispatch]);
+        // Check authentication before fetching orders
+        if (!user || !token) {
+            navigate('/login', { 
+                state: { from: '/profile' },
+                replace: true 
+            });
+            return;
+        }
+
+        dispatch(fetchUserOrders());
+    }, [dispatch, navigate, user, token]);
 
     const handleRowClick = (orderId) => {
-        // Handle row click event
         navigate(`/order/${orderId}`);
     }
 
-    if (loading) return <div className='text-center'>Loading...</div>;
-    if (error) return <div className='text-center text-red-500'>Error {error}...</div>;
+    // Show loading state
+    if (loading) {
+        return (
+            <div className='min-h-[400px] flex items-center justify-center'>
+                <div className='text-center text-gray-600'>Loading orders...</div>
+            </div>
+        );
+    }
+
+    // Show error state with login redirect
+    if (error) {
+        return (
+            <div className='min-h-[400px] flex items-center justify-center'>
+                <div className='text-center'>
+                    <p className='text-red-500 mb-4'>{error}</p>
+                    {(!user || !token) && (
+                        <button 
+                            onClick={() => navigate('/login')}
+                            className='text-[var(--srh-orange)] hover:underline'
+                        >
+                            Click here to login
+                        </button>
+                    )}
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className='max-w-7xl mx-auto p-4 sm:p-6'>
@@ -85,7 +118,7 @@ const MyOrdersPage = () => {
                 </table>
             </div>
         </div>
-    )
+    );
 }
 
-export default MyOrdersPage
+export default MyOrdersPage;
