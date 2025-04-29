@@ -12,7 +12,7 @@ const orderRoutes = require('./routes/orderRoutes');
 const uploadRoutes = require('./routes/uploadRoutes');
 const subscriberRoutes = require('./routes/subscribeRoute');
 const adminRoutes = require('./routes/adminRoutes');
-const productAdminRoutes = require('./routes/ProductAdminRoutes');
+const productAdminRoutes = require('./routes/productAdminRoutes');
 const adminOrderRoutes = require('./routes/adminOrderRoutes');
 
 const app = express(); //initialies express application
