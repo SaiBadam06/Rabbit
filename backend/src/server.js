@@ -44,7 +44,12 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/admin/products', productAdminRoutes);
 app.use('/api/admin/orders', adminOrderRoutes);
 
-
-app.listen(PORT, () =>{
+// Only start the server if we're running directly (not being imported)
+if (require.main === module) {
+  app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
-});
+  });
+}
+
+// Export the app for Vercel
+module.exports = app;
